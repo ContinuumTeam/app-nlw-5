@@ -1,7 +1,7 @@
 export default {
   primary: '#000014',
   black: '#efeff1',
-  gray: '#7f7f8b',
+  gray: '#CFCFCF',
   tag: '#323235',
 
   green: '#32B768',
@@ -13,7 +13,7 @@ export default {
   bodyLight: '#aab2ad',
 
   background: '#FFF',
-  shape: '#f0f0f0',
+  shape: '#F1FFFF',
   white: '#FFF',
 
   blue: '#3d7199',
