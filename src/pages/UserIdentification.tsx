@@ -10,14 +10,16 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  Alert
 } from 'react-native'
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import emojiImg from '../../assets/Emoji.png'
 import emojiImg2 from '../../assets/Emoji2.png'
 
 import { Button } from "../components/button";
-
 
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
@@ -30,8 +32,24 @@ export function UserIdentification() {
 
   const navigation = useNavigation()
 
-  function handleSubmit() {
-    navigation.navigate('Confirmation')
+  async function handleSubmit() {
+    if (!name)
+      return Alert.alert('Desculpe, preciso saber como se chama 😔.')
+
+    try {
+      await AsyncStorage.setItem('@plantmananger:user', name)
+
+      navigation.navigate("Confirmation", {
+        title: 'Prontinho',
+        subtitle: 'Agora vamos começar a cuidar das suas plantinhas com muito cuidado.',
+        icon: 'smile',
+        buttonTitle: 'Comecar',
+        nextScreen: 'PlantSelect'
+      })
+    } catch {
+      return Alert.alert('Nao foi possivel salvar o seu nome')
+
+    }
   }
 
   function handleInputBlur() {

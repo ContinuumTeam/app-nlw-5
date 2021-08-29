@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
 import {
   StyleSheet,
@@ -9,35 +9,60 @@ import {
 } from "react-native";
 
 import EmojiConfirmation from '../../assets/EmojiConfirmation.png'
+import EmojiConfirmation2 from '../../assets/EmojiConfirmation2.png'
+
+
 import { Button } from "../components/button";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
+interface Params {
+  title: string
+  subtitle: string
+  buttonTitle: string
+  icon: 'smile' | 'hug'
+  nextScreen: string
+}
+
+const emojis = {
+  hug: EmojiConfirmation2,
+  smile: EmojiConfirmation
+}
+
 export function Confimation() {
 
   const navigation = useNavigation()
+  const routes = useRoute()
+
+  const {
+    title,
+    subtitle,
+    icon,
+    buttonTitle,
+    nextScreen
+  } = routes.params as Params
 
   function handleStart() {
-    navigation.navigate('PlantSelect')
+    navigation.navigate(nextScreen)
   }
 
   return (
     <SafeAreaView style={style.container}>
       <View style={style.content}>
         <Image
-          source={EmojiConfirmation}
+          source={emojis[icon]}
         />
 
         <View style={style.TextArea}>
           <Text style={style.TextTitle}>
-            Prontinho
+            {title}
           </Text>
           <Text style={style.TextSubTitle}>
-            Agora vamos começar a cuidar das suas{'\n'}plantinhas com muito cuidado.
+            {subtitle}
           </Text>
         </View>
         <View style={style.ButtonArea}>
-          <Button title="Comecar" onPress={handleStart} />
+          <Button title={buttonTitle} onPress={handleStart} />
         </View>
       </View>
     </SafeAreaView>
