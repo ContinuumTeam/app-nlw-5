@@ -5,13 +5,15 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "server": "json-server ./src/services/server.json --host 10.0.0.108 --port 3333 --dalay 700"
   },
   "dependencies": {
     "@expo-google-fonts/jost": "^0.2.0",
     "@expo/vector-icons": "^12.0.0",
     "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-community/datetimepicker": "3.5.2",
+    "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
     "@react-navigation/stack": "^6.0.7",
@@ -20,6 +22,7 @@
     "expo": "~42.0.1",
     "expo-app-loading": "^1.1.2",
     "expo-font": "~9.2.1",
+    "expo-notifications": "~0.12.3",
     "expo-status-bar": "~1.0.4",
     "lottie-react-native": "4.0.2",
     "react": "16.13.1",

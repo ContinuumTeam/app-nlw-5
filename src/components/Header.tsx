@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   namePerfil: {
     fontFamily: fonts.heading,
     fontSize: 32,
-    lineHeight: 36,
+    lineHeight: 45,
     color: colors.heading
   },
   imagePerfil: {
